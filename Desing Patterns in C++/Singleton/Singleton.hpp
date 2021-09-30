@@ -21,7 +21,11 @@ public:
         return instance;
     }
 private:
-    std::vector<std::string> logs;
+	Singleton() {}; // The private constructor means that the singleton cannot be instantiated
+	Singleton(Singleton const&);
+	void operator=(Singleton const&);
+
+	std::vector<std::string> logs;
     static Singleton* instance;
     std::string message = "Hi there";
 };

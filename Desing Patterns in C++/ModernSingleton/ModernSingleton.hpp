@@ -11,9 +11,9 @@
 class ModernSingleton {
 public:
     // The copy constructor is not needed for a singleton since there should only be 1 instance
-    S(S const&) = delete;
+    ModernSingleton(ModernSingleton const&) = delete;
     // The operator= is also not needed for the same reason as the copy constructor
-    void operator=(S const&) = delete;
+    void operator=(ModernSingleton const&) = delete;
 
     void log();
     void printLogCount();
@@ -25,6 +25,7 @@ public:
         return instance;
     }
 private:
+    ModernSingleton() {};
     std::vector<std::string> logs;
     std::string message = "Hi there";
 };
