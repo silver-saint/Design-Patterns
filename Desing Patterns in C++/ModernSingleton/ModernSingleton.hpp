@@ -10,9 +10,17 @@
 
 class ModernSingleton {
 public:
+    // The copy constructor is not needed for a singleton since there should only be 1 instance
+    S(S const&) = delete;
+    // The operator= is also not needed for the same reason as the copy constructor
+    void operator=(S const&) = delete;
+
     void log();
     void printLogCount();
+
     static ModernSingleton& getInstance() {
+        // Rather than doing a heap allocation we instantiate a static member variable.
+        // This means that we do not need to handle with heap memory making the program safer and faster
         static ModernSingleton instance;
         return instance;
     }
